@@ -1,30 +1,28 @@
 Balance=1000
 AccountNumber=457896
+import random
 class Bank:
     def account(self):
         fn=int(input("Enter Account No."))
         if fn==AccountNumber:
-            print("1:Balance \n 2:Deposit \n 3:Withdrawl \n 4:Saving.A \n 5:Current.A \n 6:Recurring.D \n 7:Fixed.D \n 8:Details")
-            o.choice()
+            o.OTP()
         else:
             print("User not founnd")  
     def choice(self):
         l=int(input("Enter your choice:"))
         if l==1:
-             print("Balance:",Balance)
+             print("Current Balance:",Balance)
         elif l==2:
              o.Deposit()
         elif l==3:
              o.Withdrawl()
         elif l==4:
              o.saving()
-        elif l==5: 
-             o.current()
-        elif l==6:
+        elif l==5:
              o.recurring()
-        elif l==7:
+        elif l==6:
              o.fixed()
-        elif l==8:
+        elif l==7:
              o.details()     
         else:
              print("wrong choice!!")     
@@ -42,31 +40,38 @@ class Bank:
         else:     
            print("Balance",self.Newbalance)
     def saving(self):
-        s=Balance*3/100
+        s=Balance*7/100
         Newbalance=Balance+s
         print("Saving Acc :",Newbalance)
-    def current(self):
-        c=Balance*2/100
-        Newbalance=Balance+c
-        print("Current Acc :",Newbalance)
     def recurring(self):
-        r=Balance*6/100 
+        r=Balance*7/100 
         Newbalance=Balance+r 
         print("Recurring Deposit :",Newbalance)
     def fixed(self):
         print("For 6 months:")
-        f=Balance*3/100
+        f=Balance*4/100
         Newbalance=Balance+f
         print("Fixed Deposit :",Newbalance)
         print("For 12 months")  
-        d=Balance*7/100
+        d=Balance*8/100
         NewBalance=Balance+d
         print("Fixed Deposit :",NewBalance) 
     def details(self):
-        print("Balance:",Balance)  
+        print("Current Balance:",Balance)  
         o.saving()
-        o.current()
         o.recurring() 
         o.fixed() 
+        
+    def OTP(self):
+     for i in range(0,3):
+          OTP1=random.randint(1000,10000)
+          print(OTP1)
+          OTP2=int(input("Enter OTP\n"))
+          if OTP1==OTP2:
+             print("1:Balance \n 2:Deposit \n 3:Withdrawl \n 4:Saving.A \n 5:Recurring.D \n 6:Fixed.D \n 7:Details") 
+             o.choice()
+             exit(0)  
+          else : 
+            print("Invalid !!")            
 o=Bank()
 o.account()
