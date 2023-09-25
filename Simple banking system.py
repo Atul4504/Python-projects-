@@ -63,7 +63,7 @@ class Bank:
         o.fixed() 
         
     def OTP(self):
-     for i in range(0,3):
+     for i in range(2,-1,-1):
           OTP1=random.randint(1000,10000)
           print(OTP1)
           OTP2=int(input("Enter OTP\n"))
@@ -72,6 +72,9 @@ class Bank:
              o.choice()
              exit(0)  
           else : 
-            print("Invalid !!")            
+            if i==0:
+                print("Your account has been locked for 24 hrs\n Please contact Customer Care for more details")
+            else:
+                print("INCORRECT, Attempts left:",i)           
 o=Bank()
 o.account()
