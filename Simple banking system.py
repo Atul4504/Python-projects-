@@ -40,7 +40,7 @@ class Bank:
         else:     
            print("Balance",self.Newbalance)
     def saving(self):
-        s=Balance*7/100
+        s=Balance*5/100
         Newbalance=Balance+s
         print("Saving Acc :",Newbalance)
     def recurring(self):
