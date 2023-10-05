@@ -90,11 +90,14 @@ class Bank:
             self.check_otp_button.pack()
           
     def gh(self):
+         
          self.OTP2 = int(self.entry_OTP.get())
          if self.correct_OTP == self.OTP2:
                 self.remove_widgets()
                 self.fh()
          else:
+                self.resend_button=tk.Button(text="Resend OTP",command=self.OTP)
+                self.resend_button.pack()
                 self.remaining_attempts-=1
                 if self.remaining_attempts == 0:
                     messagebox.showerror("Error", "Your account has been locked for 24 hrs.\n Please visit the bank for more details.")
@@ -141,7 +144,7 @@ class Bank:
         self.entry_OTP.pack_forget()
         self.otp_label.pack_forget()
         self.check_otp_button.pack_forget()
-        
+        self.resend_button.pack_forget()
         
 
 o=Bank()
