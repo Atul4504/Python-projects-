@@ -14,7 +14,9 @@ class Bank:
     def account(self):
         self.fn = int(self.entry_account.get())
         if self.fn == self.AccountNumber:
-           tk.Button(text="Send OTP",command=self.OTP).pack()
+           self.button=tk.Button(text="Send OTP",command=self.OTP)
+           self.button.pack()
+           self.login_button.pack_forget()
         else:
             messagebox.showerror("Error", "User not found")
 
@@ -80,6 +82,7 @@ class Bank:
        self.fixed()
 
     def OTP(self): 
+            self.button.pack_forget()
             self.correct_OTP=random.randint(1000,10000)
             messagebox.showinfo("OTP", f"Your OTP: {self.correct_OTP}")
             self.th()
@@ -89,6 +92,7 @@ class Bank:
     def gh(self):
          self.OTP2 = int(self.entry_OTP.get())
          if self.correct_OTP == self.OTP2:
+                self.remove_widgets()
                 self.fh()
          else:
                 self.remaining_attempts-=1
@@ -97,15 +101,15 @@ class Bank:
                     self.window.destroy()
                 else:
                     messagebox.showerror("Error", f"INCORRECT, Attempts left: {self.remaining_attempts}")
-                    self.remove_widgets()
-                
-                    
+                    self.remove_widgets() 
+                    self.OTP()             
 
     def run(self):
         tk.Label(self.window, text="Enter Account No.").pack()
         self.entry_account = tk.Entry(self.window)
         self.entry_account.pack()
-        tk.Button(self.window, text="Login", command=self.account).pack()
+        self.login_button=tk.Button(self.window, text="Login", command=self.account)
+        self.login_button.pack()
    
     def th(self):
         self.otp_label=tk.Label(text="Enter OTP")
@@ -137,7 +141,7 @@ class Bank:
         self.entry_OTP.pack_forget()
         self.otp_label.pack_forget()
         self.check_otp_button.pack_forget()
-        self.OTP()
+        
         
 
 o=Bank()
